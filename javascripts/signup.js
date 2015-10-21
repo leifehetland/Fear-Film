@@ -59,7 +59,7 @@ requirejs(
 					console.log("Login Failed!", error);
 				} else {
 					console.log("Authenticated successfully with payload:", authData);
-					window.location = "/mainpage.html"
+					window.location = "./mainpage.html"
 				};
 		});
 	});

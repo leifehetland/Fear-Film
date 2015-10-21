@@ -20,5 +20,8 @@
     "require-handlebars-plugin": "~1.0.0",
     "q": "~1.0.1",
     "grunt": "~0.4.5"
+  },
+  "devDependencies": {
+    "firebase": "~2.3.1"
   }
 }
