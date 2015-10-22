@@ -13,8 +13,8 @@ requirejs.config({
 });
 
 requirejs(
-    ["jquery", "hbs", "bootstrap", "search", "q", 'hbs!../templates/movies'],
-    function($, Handlebars, bootstrap, search, Q, movieTpl) {
+    ["jquery", "hbs", "bootstrap", "search", "q", 'hbs!../templates/movies', 'addfilm', 'firebasepop' ],
+    function($, Handlebars, bootstrap, search, Q, movieTpl, addfilm, firebasepop) {
 
 
       // ------- Tab functionality -------
@@ -29,38 +29,42 @@ requirejs(
       // ------- search functionality -------
 			$("#search-by-title-button").click(function(e) {
 				var globalJson;
-
+        var moreGlobalJson;
+        var firebaseRef = new Firebase("https://fear-film.firebaseio.com/");
+        var authData = firebaseRef.getAuth();
+        var userUID = authData.uid;
         e.preventDefault();
 				console.log('CLICKED!');
-        console.log(URL)
         //var globalFilmData;
         search.filmFinder()
           .then(function(json_data) {
            console.log("checking json data in mainpage", json_data)
            globalJson = json_data;
-           var array = $.map(json_data, function(value) {
-             return value;
-           }).then(function(){
-           console.log("after return", value);
-            $('#populatee').html(movieTpl(globalJson));
-            console.log("Mainpage finished executing")
-            })
-          });
+           //var array = $.map(json_data, function(value) {
+           //return value;
+       //    })
+          })
+            .then(function(){
+                  console.log("search on mainpage finished executing", globalJson);
+                 $('#populatee').html(movieTpl(globalJson));
+               });
+          firebasepop.filmFinderFirebase()
+            .then(function(more_json_data) {
+            console.log("checking more json data in mainpage", more_json_data)
+            var array = $.map(more_json_data, function(value, index) {
+              return value;
+            });
 
-      })
-      // ------- end search functionality -------
+            moreGlobalJson = array;
+            console.log(moreGlobalJson);
+      //      var array = $.map(more_json_data, function(value2) {
+        //     return value2;
+          //  })
+          })
+            .then(function(){
+                 	console.log("bla");
+                  console.log("firebasepop on mainpage finished executing", moreGlobalJson);
+                 	//$('#populatee').html(movieTpl(moreGlobalJson));
+               });
+      });
     });
-
-
-
-      /* search.filmFinder()
-        .then(function(fData) {
-          console.log("fData = ", fData)
-          $('#populatee').html(fData.title);
-        })
-			console.log(URL);
-			console.log('movietitle', movietitle);
-      $("#populatee").html(URL);
-    })
-    });
-*/

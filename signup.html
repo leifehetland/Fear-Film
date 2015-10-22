@@ -1,0 +1,46 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sign Up Form</title>
+      <link rel="stylesheet" href="styles/signup.css">
+  </head>
+  <body>
+
+    <form>
+
+      <h1>Sign Up</h1>
+
+      <fieldset>
+        <legend><span class="number"></span></legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name">
+
+        <label for="mail">Email:</label>
+        <input type="email" id="email" name="user_email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="user_password">
+      </fieldset>
+      <button type="submit" id="signUp">Sign Up</button>
+      <br>
+      <br>
+      <h1>Login</h1>
+        <form>
+          <div class="form-group">Email:
+            <input type="text" id="lEmail" class="form-control" placeholder="">
+          </div>
+
+          <div class="form-group">Password:
+            <input type="password" id="lPassword" class="form-control" placeholder="">
+          </div>
+
+          <button type="submit" id="logIn" class="btn btn-default">Log In</button>
+        </form>
+    </form>
+
+  </body>
+  <script src="./lib/bower_components/jquery/dist/jquery.js"></script>
+  <script data-main="./javascripts/signup" src="./lib/bower_components/requirejs/require.js"></script>
+
+</html>

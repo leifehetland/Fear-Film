@@ -11,10 +11,8 @@ define(function(require) {
       $.ajax({ url: URL })
         .done(function(json_data) {
         console.log("Your new movie is", json_data);
-        //$("#populatee").html("it works!", movieTpl({json_data}));
-        //("successful population of " + $("#t").val() + " to page");
         console.log("search js has finished, resolving json data", json_data)
-        $('#populatee').append(json_data);
+        //$('#populatee').append(json_data);
         console.log("does it pass?")
         deferred.resolve(json_data);
         console.log(json_data)
@@ -28,8 +26,3 @@ define(function(require) {
   }
 });
 
-/*
-require(['hbs!../templates/movies'], function(movieTpl) {
-      $("#populatee").html(bookTpl({ books:booksArray }));
-      console.log(booksArray);
-*/

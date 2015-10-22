@@ -9,54 +9,41 @@
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
 </head>
 <body>
-    <div>
+  <div role="tabpanel" class="tab-pane active" id="home">
+    <form class="well form-search" id="search-by-title-form" onsubmit="return false;">
+      <fieldset>
+          <legend>By Title</legend>
+      </fieldset>
+      <div>
+          <label class="control-label" for="t">Title:</label>
+          <input type="text" id="t" name="t" class="input-small">
+          &nbsp;&nbsp;
+          <button id="search-by-title-button" type="button" class="btn-sm btn-primary">Search</button>
+          <button id="search-by-title-reset" type="reset" class="btn-sm">Reset</button>
+      </div>
+    </form>
+  </div>
 
+  <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-
+    <li role="presentation" class="active"><a href="#unwatched" aria-controls="unwatched" role="tab" data-toggle="tab">Unwatched</a></li>
+    <li role="presentation"><a href="#watched" aria-controls="watched" role="tab" data-toggle="tab">Watched</a></li>
+    <li role="presentation"><a href="#fivestars" aria-controls="fivestars" role="tab" data-toggle="tab">5 Stars</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">Search Films
-			 <form class="well form-search" id="search-by-title-form" onsubmit="return false;">
-          <fieldset>
-              <legend>By Title</legend>
-          </fieldset>
-          <div>
-              <label class="control-label" for="t">Title:</label>
-              <input type="text" id="t" name="t" class="input-small">
-              &nbsp;&nbsp;
-              <button id="search-by-title-button" type="button" class="btn-sm btn-primary">Search</button>
-              <button id="search-by-title-reset" type="reset" class="btn-sm">Reset</button>
-          </div>
-          <div class="hide" id="search-by-title-request">
-              <br />
-              <p>Request:</p>
-              <pre class="alert alert-box"><a href="javascript:;" target="_blank"></a></pre>
-          </div>
-          <div id="search-by-title-progress" class="hide progress progress-info progress-striped active">
-              <div class="progress-bar" style="width: 100%;">
-              </div>
-          </div>
-          <div class="hide" id="search-by-title-response">
-              <p>Response:</p>
-              <pre class="alert alert-success" style="margin-bottom: 0px;"></pre>
-          </div>
-          </form>
-		</div>
-    <div role="tabpanel" class="tab-pane" id="profile">My Profile</div>
-  </div>
-
-</div>
-
-    <div class="container" id="output">
-      <div id="populatee">
+    <div role="tabpanel" class="tab-pane active" id="unwatched">
+      <div class="container" id="populatee">
         This is where stuff should populate
       </div>
     </div>
+    <div role="tabpanel" class="tab-pane" id="watched">...</div>
+    <div role="tabpanel" class="tab-pane" id="fivestars">...</div>
+  </div>
+</div>
+<script data-main="javascripts/mainpage" src="./lib/bower_components/requirejs/require.js"></script>
+
 </body>
-<script data-main="javascripts/mainpage" src="lib/bower_components/requirejs/require.js"></script>
 </html>
